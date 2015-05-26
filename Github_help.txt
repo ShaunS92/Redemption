@@ -1,0 +1,20 @@
+Github
+	To set up a fork go to github and fork someone's repository (website)
+	$git clone https://github.com/ShaunS92/Redemption.git
+	$cd Redemption
+	$git remote add AJ https://github.com/AJHanekom/Redemption.git
+	$git remote -v
+Sync local github with remote 
+	$git fetch AJ
+	$git merge AJ/master
+Sync Remote with local
+	$git add "filename"
+	$git commit -m "filename" 
+	$git push
+	-go to github website
+	-create pull request
+
+
+git@github.com:AJHanekom/Redemption.git
+
+HendrikMarais@hotmail.com
