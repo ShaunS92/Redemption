@@ -11,19 +11,25 @@
 
       <h2>Categories available</h2>
 
-            <ul>
-               {% if display_categories %}
-                  {% for category in display_categories %}  
+         <ul>
+               {% if categories %}
+                  {% for category in categories %}  
                        <li> 
-                           <a href="{% url 'wiki:view_category' category.category_title %}/"> {{ category.category_title }}</a>
-                        </li>
-                                                                 
+                           <a href="{% url 'wiki:category' category.id %}"> {{ category.category_title }}{{ category.id }}</a>
+                        </li>                                   
                         {% endfor %}   
                                
                            {% else %} 
                            <p>No Categories</p>
                            {% endif %} 
-            </ul>
+       </ul>
+
+
+
+
+
+
+
 
 
    </body>

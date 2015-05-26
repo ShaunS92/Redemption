@@ -7,19 +7,17 @@ from wiki.models import Article
 def wiki(request):
 	return render(request, 'wiki/wiki.html')
 
-def view_categories(request):
-	display_categories = Category.objects.all()
-	context = {'display_categories': display_categories}
-	return render(request, 'wiki/categories.html', context)
+def categories(request,):
+	categories = Category.objects.all()
+	context = {'categories': categories}
+	return render(request, 'wiki/categories.html',context)
 
-def view_category(request, category_title):
-	display_category = Article.objects.all()
-	context = {'display_category': display_category}
-	return render(request, 'wiki/category.html',context)
+def category(request, test):
+	articles = Article.objects.filter(category_id=test)
+	context = {'articles': articles}
+	return render(request, 'wiki/category.html', context)
 
-def view_article(request):
-	display_article = Article.objects.all()
-	context = {'display_article': display_article}
-	return render(request, 'wiki/article.html', context)
+def article(request):
+	return render(request, 'wiki/article.html')
 
 
