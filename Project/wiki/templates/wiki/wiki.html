@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      {% load staticfiles %}
+      <link href="{% static 'wiki/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+      <title>wiki</title>
+   </head>
+   <body>
+
+      <a href="{% url 'wiki:wiki' %}">wiki</a>
+      <a href="{% url 'home:home' %}">home</a>
+
+      <h1>This is the Wiki page</h1>         
+      <a href="{% url 'wiki:view_categories' %}">Categories</a>
+                                     
+
+
+
+
+
+   </body>
+</html>
+
+

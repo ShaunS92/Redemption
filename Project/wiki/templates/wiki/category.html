@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      {% load staticfiles %}
+      <link href="{% static 'wiki/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+      <title>wiki</title>
+   </head>
+   <body>
+      <a href="{% url 'wiki:wiki' %}">wiki</a>
+      <a href="{% url 'home:home' %}">home</a>
+
+      <h2>Category</h2>
+
+      <ul>
+               {% if display_category %}
+                  {% for article in display_category %}  
+                       <li> 
+                           <a href="{% url 'wiki:view_article' %}{{ article.article_title }}"> {{ article.article_title }}</a>
+                        </li>
+                                                                 
+                        {% endfor %}   
+                               
+                           {% else %} 
+                           <p>No Categories</p>
+                           {% endif %} 
+            </ul>
+
+
+
+
+   </body>
+</html>
+
+
