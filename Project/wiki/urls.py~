@@ -1,0 +1,8 @@
+from django.conf.urls import url
+from . import views
+
+urlpatterns = [ 
+	url(r'^Item/',views.view_categories, name='view_item'), 
+	url(r'^',views.wiki, name='wiki'),  
+	
+]
