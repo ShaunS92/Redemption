@@ -1,5 +1,58 @@
-h1
+div#Introduction 
 {
-font-size: 16px;
-color: green;
+	display: block; 
+	color: black; 
+	padding-left: 7px; 
+	padding-right: 7px; 
+	padding-top: 10px; 
+	padding-bottom: 5px; 
+	width: 95%; 
+	border: 2px solid navy;
 }
+div#Rating 
+{
+	display: block; 
+	color: black; 
+	padding-left: 7px; 
+	padding-right: 7px; 
+	padding-top: 10px; 
+	padding-bottom: 5px; 
+	width: 95%; 
+	border: 2px solid navy;
+}
+div#Soil 
+{
+	display: block; 
+	color: black; 
+	padding-left: 7px; 
+	padding-right: 7px; 
+	padding-top: 10px; 
+	padding-bottom: 5px; 
+	width: 95%; 
+	border: 2px solid navy;
+}
+div#Sunlight 
+{
+	display: block; 
+	color: black; 
+	padding-left: 7px; 
+	padding-right: 7px; 
+	padding-top: 10px; 
+	padding-bottom: 5px; 
+	width: 95%; 
+	border: 2px solid navy;
+}
+div#Watering 
+{
+	display: block; 
+	color: black; 
+	padding-left: 7px; 
+	padding-right: 7px; 
+	padding-top: 10px; 
+	padding-bottom: 5px; 
+	width: 95%; 
+	border: 2px solid navy;
+}
+
+
+

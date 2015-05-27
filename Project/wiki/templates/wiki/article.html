@@ -5,12 +5,94 @@
       <link href="{% static 'wiki/style.css' %}" rel="stylesheet" type="text/css" media="all" />
       <title>wiki</title>
    </head>
-   <body>
-      <a href="{% url 'wiki:wiki' %}">wiki</a>
-      <a href="{% url 'home:home' %}">home</a>
 
-      <h2>Article: {{article.category}}</h2>
+   <body>
+
+         <div>        
+            <h1>Wiki's Gardening World</h1>
+            <li><a href="{% url 'wiki:wiki' %}">wiki</a></li>
+            <li><a href="{% url 'home:home' %}">home</a></li>
+         </div>
+
+      <div id="article_container">
+
+            <h1>Growing - {{thisArticle.article_title}}</h1>
+           
+            <div id="Introduction">
+               <h2>Introduction</h2>
+               <p>
+               {{thisArticle.article_introduction}}
+               </p>
+
+
+               <button id="EditIntroduction" type="button">Edit Introduction</button>
+
+               <div id = "text" style="display:none">
+
+                   <form action="{% url 'wiki:edit_article' thisArticle.id %} " method="post" id="IntroductionText">
+                     {% csrf_token %}
+                     
+                     <input type="text" name="new" id="textarea" />
+                     <input type="submit" id="submit" value="Save Changes"/>
+
+                     <!--<textarea id="textarea" placeholder=""></textarea>-->
+
+
+                   </form>
+
+                   
+
+               </div>
+
+                <script type="text/javascript">
+                  var theButton = document.getElementById('EditIntroduction');
+                  var submitButton = document.getElementById('submit');
+                  text = document.getElementById('text');
+                  textarea = document.getElementById('textarea');
+                  
+                  theButton.onclick = function() 
+                  { 
+                  textarea.value = "{{thisArticle.article_introduction}}";
+                  var isHidden = text.style.display == 'none';
+                  text.style.display = isHidden ? 'block' : 'none'   
+                  }
+                  submitButton.onclick = function() 
+                  { 
+                  location.reload();  
+                  }
+
+                 
+               </script>
+
+
+            </div>
+
+            <div id="Rating">
+               <h3>Rating</h3>
+               <p>{{thisArticle.article_rating}}</p2>
+            </div>
+
+            <div id="Soil">
+               <h3>Soil</h3>
+               <p> {{thisArticle.article_soil}}</p2>
+            </div>
+
+            <div id="Sunlight">
+               <h3>Sunlight</h3>
+               <p>{{thisArticle.article_sunlight}}</p>
+            </div>
+
+            <div id="Watering">
+               <h3>Watering</h3>
+               <p>{{thisArticle.article_watering}}</p>
+            </div>   
+
+         
+      </div>
+
       
+
+
    </body>
 </html>
 

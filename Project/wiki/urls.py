@@ -5,8 +5,9 @@ urlpatterns = [
 	
 	url(r'^$',views.wiki, name='wiki'), 
 	url(r'^Categories/',views.categories, name='categories'),
-	url(r'^Category/?(?P<test>\w?/?)',views.category, name='category'),
-	url(r'^Article/',views.article, name='article'),
+	url(r'^Category/?(?P<test>\w?/?)/',views.category, name='category'),
+	url(r'^Article/?(?P<test>\w?/?)/',views.article, name='article'),
+	url(r'^123/?(?P<test>\w?/?)/',views.edit_article, name='edit_article'),
 	#url(r'^',views.category, name='category'),
 	#url(r'^',views.article, name='article'),
 	

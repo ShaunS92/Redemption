@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 
 class Category(models.Model):
 	category_title = models.CharField(max_length='140',default="New Category")
@@ -9,9 +8,16 @@ class Category(models.Model):
 	
 class Article(models.Model):
 	article_title = models.CharField(max_length='140',default="New Article")
+	
+	article_introduction = models.CharField(max_length='140',default="New Article",null=True)
+
+	article_rating = models.TextField(default='No rating yet')
+
+	article_soil = models.TextField(default='No information on soil added yet! Be the fisrt to post something!')
+	article_sunlight = models.TextField(default='No information on sunlight added yet! Be the fisrt to post something!')
+	article_watering = models.TextField(default='No information on watering added yet! Be the fisrt to post something!')
+
 	category = models.ForeignKey(Category)
-	article_text = models.TextField(default='add content here')
-	article_editors = models.CharField(max_length='200', default='edited by')
-	pub_date = models.DateTimeField('date published', default=timezone.now())
+
 	def __str__(self):
 		return self.article_title
