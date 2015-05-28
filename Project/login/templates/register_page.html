@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Register</title>
+	</head>
+
+	<body>
+
+		<form enctype='multipart/form-data' name = 'register_form' method='POST' action ='.'>
+			{% csrf_token %}
+			<input name = 'username_text' id='uname_field' placeholder='username' />
+			<input name='password_text'id='pword_field' placeholder='password' />
+			<input name='first_name_text'id='id_first_name' placeholder='First Name' />
+			<input name='last_name_text'id='id_last_name' placeholder='Lastname' />
+			<input name='email_text'id='id_email' placeholder='example@something.com' />
+			Enter Your Date
+			<input type="date" name="bday_text">
+			<textarea name='description_text' id = 'id_descrpt'>Short Description</textarea>
+			
+			<input type='submit' value='REGISTER' />
+		</form>
+		
+		
+		</form>
+
+	</body>
+
+</html>

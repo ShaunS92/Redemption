@@ -15,6 +15,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+CUSTOM_USER_MODEL = "login.UserProfile" #ADDED FOR CUSTOM USER CLASS
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -38,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
-    'wiki'
+    'wiki',
+    'login',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Login</title>
+	</head>
+	
+	<body>
+
+		<form name = 'RegisterForm' method='POST'>
+			{% csrf_token %}
+			<input name = 'username_text' id='uname_field' placeholder='username' />
+			<input type='password' name='password_text'id='pword_field' placeholder='password' />
+			
+
+			<input type='submit' value='LOGIN' />
+		</form>
+		<a href="{% url 'login:login' %}">login</a>
+		<a href="{% url 'login:logout' %}">Logout</a>
+		<a href="{% url 'login:register' %}">register</a>
+		
+
+		<a href='http://localhost:8000/home'> HOME</a>
+		</form>
+
+	</body>
+
+</html>

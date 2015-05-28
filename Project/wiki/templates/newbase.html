@@ -39,8 +39,9 @@
             <li role="presentation"><a href="{% url 'wiki:categories' %}">Categories</a></li>
 
             <!-- RONAN GOES HERE -->
-		<li role="presentation"><a href="#">Login</a></li>
-		<li role="presentation"><a href="#">Register</a></li>
+		<li role="presentation"><a href="{% url 'login:login' %}">Login</a></li>
+		<li role="presentation"><a href="{% url 'login:register' %}">Register</a></li>
+    <li role="presentation"><a href="{% url 'login:logout' %}">Logout</a></li>
           </ul>
         </nav>
       </div>

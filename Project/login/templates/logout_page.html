@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Login</title>
+	</head>
+
+	<body>
+
+		<form name = 'register_form' method='POST'>
+			{% csrf_token %}
+			<input name = 'username_text' id='uname_field' placeholder='username' />
+			<input name='password_text'id='pword_field' placeholder='password' />
+			
+
+			<input type='submit' value='LOGIN' />
+		</form>
+		
+		
+		</form>
+
+	</body>
+
+</html>
