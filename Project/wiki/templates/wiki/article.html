@@ -1,99 +1,158 @@
-<!DOCTYPE HTML>
-<html>
-   <head>
-      {% load staticfiles %}
-      <link href="{% static 'wiki/style.css' %}" rel="stylesheet" type="text/css" media="all" />
-      <title>wiki</title>
-   </head>
+{% extends 'newbase.html' %}
+	{% block content %}
 
-   <body>
 
-         <div>        
-            <h1>Wiki's Gardening World</h1>
-            <li><a href="{% url 'wiki:wiki' %}">wiki</a></li>
-            <li><a href="{% url 'home:home' %}">home</a></li>
-         </div>
-
-      <div id="article_container">
+      <div id="container">
 
             <h1>Growing - {{thisArticle.article_title}}</h1>
            
+            
+<!-- INTRODUCTION -->
             <div id="Introduction">
                <h2>Introduction</h2>
-               <p>
-               {{thisArticle.article_introduction}}
-               </p>
+               <p>{{thisArticle.article_introduction}}</p>
+               <button id="EditIntroduction_Button" type="button">Edit Introduction </button>
+               <div id = "Introduction_Div" style="display:none">
 
-
-               <button id="EditIntroduction" type="button">Edit Introduction</button>
-
-               <div id = "text" style="display:none">
-
-                   <form action="{% url 'wiki:edit_article' thisArticle.id %} " method="post" id="IntroductionText">
+                   <form action="{% url 'wiki:edit_article_introduction' thisArticle.id %} " method="post">
                      {% csrf_token %}
-                     
-                     <input type="text" name="new" id="textarea" />
-                     <input type="submit" id="submit" value="Save Changes"/>
-
-                     <!--<textarea id="textarea" placeholder=""></textarea>-->
-
-
+                     <input type="textarea" name="intro" id="Introduction_ChangeField" />
+                     <input type="submit" id="Introduction_SaveChangesButton" value="Save Changes"/>
                    </form>
-
-                   
-
-               </div>
-
-                <script type="text/javascript">
-                  var theButton = document.getElementById('EditIntroduction');
-                  var submitButton = document.getElementById('submit');
-                  text = document.getElementById('text');
-                  textarea = document.getElementById('textarea');
-                  
-                  theButton.onclick = function() 
-                  { 
-                  textarea.value = "{{thisArticle.article_introduction}}";
-                  var isHidden = text.style.display == 'none';
-                  text.style.display = isHidden ? 'block' : 'none'   
-                  }
-                  submitButton.onclick = function() 
-                  { 
-                  location.reload();  
-                  }
-
-                 
-               </script>
-
-
+              </div> 
             </div>
 
+<!-- RATING -->
             <div id="Rating">
-               <h3>Rating</h3>
-               <p>{{thisArticle.article_rating}}</p2>
-            </div>
+               <h2>Rating</h2>
+               <p>{{thisArticle.article_rating}}</p>
+               <button id="EditRating_Button" type="button">Edit Introduction </button>
+               <div id = "Rating_Div" style="display:none">
 
+                   <form action="{% url 'wiki:edit_article_rating' thisArticle.id %} " method="post">
+                     {% csrf_token %}
+                     <input type="textarea" name="rat" id="Rating_ChangeField" />
+                     <input type="submit" id="Rating_SaveChangesButton" value="Save Changes"/>
+                   </form>
+            </div> 
+            </div> 
+
+<!-- SOIL -->
             <div id="Soil">
-               <h3>Soil</h3>
-               <p> {{thisArticle.article_soil}}</p2>
-            </div>
+             
+               <h2>Soil</h2>
+               <p>{{thisArticle.article_soil}}</p>
+               <button id="EditSoil_Button" type="button">Edit Introduction </button>
+               <div id = "Soil_Div" style="display:none">
 
-            <div id="Sunlight">
-               <h3>Sunlight</h3>
+                   <form action="{% url 'wiki:edit_article_soil' thisArticle.id %} " method="post">
+                     {% csrf_token %}
+                     <input type="textarea" name="sol" id="Soil_ChangeField" />
+                     <input type="submit" id="Soil_SaveChangesButton" value="Save Changes"/>
+                   </form>
+            </div> </div> 
+
+
+<!-- SUNLIGHT -->
+             <div id="Sunlight">
+  
+               <h2>Sunlight</h2>
                <p>{{thisArticle.article_sunlight}}</p>
-            </div>
+               <button id="EditSunlight_Button" type="button">Edit Introduction </button>
+               <div id = "Sunlight_Div" style="display:none">
 
-            <div id="Watering">
-               <h3>Watering</h3>
+                   <form action="{% url 'wiki:edit_article_sunlight' thisArticle.id %} " method="post">
+                     {% csrf_token %}
+                     <input type="textarea" name="sun" id="Sunlight_ChangeField" />
+                     <input type="submit" id="Sunlight_SaveChangesButton" value="Save Changes"/>
+                   </form>
+            </div> </div> 
+
+<!-- WATERING -->
+             <div id="Watering">
+        
+               <h2>Watering</h2>
                <p>{{thisArticle.article_watering}}</p>
-            </div>   
+               <button id="EditWatering_Button" type="button">Edit Introduction </button>
+               <div id = "Watering_Div" style="display:none">
 
-         
-      </div>
+                   <form action="{% url 'wiki:edit_article_watering' thisArticle.id %} " method="post">
+                     {% csrf_token %}
+                     <input type="textarea" name="wat" id="Watering_ChangeField" />
+                     <input type="submit" id="Watering_SaveChangesButton" value="Save Changes"/>
+                   </form>
+            </div> 
 
+      </div></div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <script type="text/javascript">
+   EditIntroduction_Button = document.getElementById('EditIntroduction_Button');
+   EditRating_Button = document.getElementById('EditRating_Button');
+   EditSoil_Button = document.getElementById('EditSoil_Button');
+   EditSunlight_Button = document.getElementById('EditSunlight_Button');
+   EditWatering_Button = document.getElementById('EditWatering_Button');
+
+   Introduction_Div = document.getElementById('Introduction_Div');
+   Rating_Div = document.getElementById('Rating_Div');
+   Soil_Div = document.getElementById('Soil_Div');
+   Sunlight_Div = document.getElementById('Sunlight_Div');
+   Watering_Div = document.getElementById('Watering_Div');
+
+   Introduction_ChangeField = document.getElementById('Introduction_ChangeField');
+   Rating_ChangeField = document.getElementById('Rating_ChangeField');
+   Soil_ChangeField = document.getElementById('Soil_ChangeField');
+   Sunlight_ChangeField = document.getElementById('Sunlight_ChangeField');
+   Watering_ChangeField = document.getElementById('Watering_ChangeField');
+                  
+   EditIntroduction_Button.onclick = function() 
+   { 
+   Introduction_ChangeField.value = "{{thisArticle.article_introduction}}"
+   var isHidden = Introduction_Div.style.display == 'none';
+   Introduction_Div.style.display = isHidden ? 'block' : 'none'   
+   }
+   EditRating_Button.onclick = function() 
+   { 
+   Rating_ChangeField.value = "{{thisArticle.article_rating}}"
+   var isHidden = Rating_Div.style.display == 'none';
+   Rating_Div.style.display = isHidden ? 'block' : 'none'   
+   }
+    EditSoil_Button.onclick = function() 
+   { 
+   Soil_ChangeField.value = "{{thisArticle.article_soil}}"
+   var isHidden = Soil_Div.style.display == 'none';
+   Soil_Div.style.display = isHidden ? 'block' : 'none'   
+   }
+    EditSunlight_Button.onclick = function() 
+   { 
+   Sunlight_ChangeField.value = "{{thisArticle.article_sunlight}}"
+   var isHidden = Sunlight_Div.style.display == 'none';
+   Sunlight_Div.style.display = isHidden ? 'block' : 'none'   
+   }
+    EditWatering_Button.onclick = function() 
+   { 
+   Watering_ChangeField.value = "{{thisArticle.article_watering}}"
+   var isHidden = Watering_Div.style.display == 'none';
+   Watering_Div.style.display = isHidden ? 'block' : 'none'   
+   }
+   </script>
+
+
+
+
+{% endblock %}
       
-
-
-   </body>
-</html>
-
-

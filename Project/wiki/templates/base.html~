@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <!--{% load staticfiles %}-->
+<link href="../../static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+      <link href="/static/articlelist.css" rel="stylesheet" type="text/css" media="all" />
+      <title>wiki</title>
+   </head>
+   <body>
+<div id="Headings">
+		<header>
+			<img src="wikilogo.jpg" alt ="Wiki logo" />
+
+			<form id="Login" name="Login">
+			<fieldset id="username">
+				
+				<legend>Log In</legend>
+				<label>User Name</label>
+				<input type="text" name="username" id="username"/>
+				<label>Password</label>
+				<input type="text" name="username" id="username"/>
+
+			<div id="LoginButt">
+				<input type="button" value="Log In" onclick=""/>
+			</div>
+			</fieldset>
+			
+			</form>
+		
+	</header>
+
+	</div>
+
+	<div id="NavStyles">
+		<ul>
+     			<li><a href="{% url 'wiki:wiki' %}">wiki</a></li>
+      			<li><a href="{% url 'home:home' %}">home</a></li>
+			<li><a href="#">Register me!</a><li>
+		</ul>
+	</div>
+
+	{% block content %}
+	{% endblock %}
+
+	</body>
+	<footer>
+		<address> Wiki's Gardening World</address>
+	</footer>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <!--{% load staticfiles %}-->
+      <link href="userprostyles.css" rel="stylesheet" type="text/css" media="all" />
+      <title>wiki</title>
+   </head>
+   <body>
+		<div id="Headings">
+		<header>
+			<img src="wikilogo.jpg" alt="Wiki Logo"/>
+
+			<form id="Login" name="Login">
+			<fieldset id="username">
+				
+				<legend>Log In</legend>
+				<label>User Name</label>
+				<input type="text" name="username" id="username"/>
+				<label>Password</label>
+				<input type="text" name="username" id="username"/>
+			<div id="LoginButt">
+				<input type="button" value="Log In" onclick=""/>
+			</div>
+			</fieldset>
+			
+			</form>
+		
+	</header>
+
+	</div>
+		
+	<div id="NavStyles">
+		<ul>
+     			<li><a href="{% url 'wiki:wiki' %}">wiki</a></li>
+      			<li><a href="{% url 'home:home' %}">home</a></li>
+			<li><a href="#">Register Me!</a></li>
+		</ul>
+	</div>
+	
+
+	<div id="UserDetails">
+		<div id="UserImage">
+		<img src="generic_avatar.jpg" alt=""/>
+		<form id="UserPic" name="UsePic" method ="post">
+			<label>My Picture:</label>
+		<input type="file" name="image" id="userpic" />	<input type="button" value="Add my Picture" id="userpic" onclick="" />
+		</form>
+	</div>
+
+		<ul>
+			<li>UserName: Adi123</li>
+		</ul>
+		<h4>My Bio</h4>
+		<p>I loved gardening since before I could even speak</p>
+	</div>
+
+	<div id="ArticleHist">
+		<table class="History">
+			<caption>My Wiki History</caption>
+			<tr>
+			<th>Date</th>
+			<th>Action</th>
+			</tr>
+			<tr>
+			<td>25/10/2011</td>
+			<td>Create "Growing Parsley" article</td>
+			</tr>
+		</table>
+	</div>
+	</body>
+
+	<footer>
+		<address>Wiki's Gardening World</address>
+	</footer>
+
+</html>

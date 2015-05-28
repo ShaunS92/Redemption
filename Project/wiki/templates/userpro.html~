@@ -1,0 +1,35 @@
+{% extends 'newbase.html' %}
+	{% block content %}
+	
+
+	<div id="UserDetails">
+		<div id="UserImage">
+		<img src="generic_avatar.jpg" alt=""/>
+		<form id="UserPic" name="UsePic" method ="post">
+			<label>My Picture:</label>
+		<input type="file" name="image" id="userpic" />	<input type="button" value="Add my Picture" id="userpic" onclick="" />
+		</form>
+	</div>
+
+		<ul>
+			<li>UserName: Adi123</li>
+		</ul>
+		<h4>My Bio</h4>
+		<p>I loved gardening since before I could even speak</p>
+	</div>
+
+	<div id="ArticleHist">
+		<table class="History">
+			<caption>My Wiki History</caption>
+			<tr>
+			<th>Date</th>
+			<th>Action</th>
+			</tr>
+			<tr>
+			<td>25/10/2011</td>
+			<td>Create "Growing Parsley" article</td>
+			</tr>
+		</table>
+	</div>
+	
+{% endblock %}

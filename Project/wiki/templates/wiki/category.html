@@ -1,16 +1,5 @@
-<!DOCTYPE HTML>
-<html>
-   <head>
-      {% load staticfiles %}
-      <link href="{% static 'wiki/style.css' %}" rel="stylesheet" type="text/css" media="all" />
-      <title>wiki</title>
-   </head>
-   <body>
-      <a href="{% url 'wiki:wiki' %}">wiki</a>
-      <a href="{% url 'home:home' %}">home</a>
-
-
-   
+{% extends 'newbase.html' %}
+	{% block content %}
 
       <h2>Category</h2>
       <button id="Add_Article" type="button">Add Article</button>
@@ -27,9 +16,5 @@
                            {% endif %} 
        </ul>
 
-
-
-   </body>
-</html>
-
+{% endblock %}
 

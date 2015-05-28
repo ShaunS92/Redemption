@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <!--{% load staticfiles %}-->
+      <link href="createarticlestyle.css" rel="stylesheet" type="text/css" media="all" />
+      <title>wiki</title>
+   </head>
+   <body>
+		<div id="Headings">
+		<header>
+			<img src="wikilogo.jpg" alt="Wiki Logo" />
+
+			<form id="Login" name="Login">
+			<fieldset id="username">
+				
+				<legend>Log In</legend>
+				<label>User Name</label>
+				<input type="text" name="username" id="username"/>
+				<label>Password</label>
+				<input type="text" name="username" id="username"/>
+			<div id="LoginButt">
+				<input type="button" value="Log In" onclick=""/>
+			</div>
+			</fieldset>
+			
+			</form>
+		
+	</header>
+
+	</div>
+		
+	<div id="NavStyles">
+		<ul>
+     			<li><a href="{% url 'wiki:wiki' %}">wiki</a></li>
+      			<li><a href="{% url 'home:home' %}">home</a></li>
+			<li><a href="#">Register Me!</a></li>
+		</ul>
+	</div>
+
+	<div id="CreateArticle">
+		<h2> Create your article </h2>
+		<form id="UserArticleData">
+			<fieldset class="ArticleData">
+			<textarea name="title" id="title" placeholder="Enter your article title here"></textarea>
+			<textarea name="intro" id="intro" placeholder="Enter the introduction of your article here"></textarea>
+			<textarea name="soil" id="soil" placeholder="Enter the soil information of your article here"></textarea>
+			<textarea name="sunlight" id="sunlight" placeholder="Enter the sunlight information of your article here"></textarea>
+<textarea name="water" id="water" placeholder="Enter the water information of your article here"></textarea>
+
+			</fieldset>
+			<fieldset class="ArticleData">
+				<input type="submit" value="submit my article"/>
+			</fieldset>
+		</form>
+
+		<aside>
+			<h3>Styling Tools</h3>
+			<ul>
+				<li><a href="#">Bold</a></li>
+				<li><a href="#">Italics</a></li>
+				<li><a href="#">Underline</a></li>
+			
+			</ul>
+		</aside>
+	</div>
+
+	</body>
+
+	<footer>
+		<address>
+			Wiki's Gardening World
+		</address>
+	</footer>
+
+</html>
