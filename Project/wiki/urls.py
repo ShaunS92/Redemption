@@ -5,14 +5,17 @@ urlpatterns = [
 	
 	url(r'^$',views.wiki, name='wiki'), 
 	url(r'^Categories/',views.categories, name='categories'),
-	url(r'^Category/?(?P<test>\w?/?)/',views.category, name='category'),
-	url(r'^Article/?(?P<test>\w?/?)/',views.article, name='article'),
-	url(r'^123/?(?P<test>\w?/?)/123',views.edit_article_introduction, name='edit_article_introduction'),
-	url(r'^1231/?(?P<test>\w?/?)123/',views.edit_article_rating, name='edit_article_rating'),
-	url(r'^12323/?(?P<test>\w?/?)123/',views.edit_article_soil, name='edit_article_soil'),
-	url(r'^12334/?(?P<test>\w?/?)123/',views.edit_article_sunlight, name='edit_article_sunlight'),
-	url(r'^12345/?(?P<test>\w?/?)123/',views.edit_article_watering, name='edit_article_watering'),
+	url(r'^Category/?(?P<test>\w+/?)/',views.category, name='category'),
+	url(r'^Article/?(?P<test>\w+?/?)/',views.article, name='article'),
+	url(r'^Edit/(?P<eai>\w+)/',views.edit_article_content, name='edit_article_content'),
+	
+	url(r'^History/(?P<hai>\w+)/',views.article_history, name='article_history'),
+	url(r'^Content Reverted/(?P<ri>\w+)/(?P<related>\w+)',views.revert_content, name='revert_content'),
+	
 
+
+	url(r'^Add Category/',views.add_category, name='add_category'),
+	url(r'^Add Article/(?P<categoryID>\w+)/',views.add_article, name='add_article'),
 	#url(r'^',views.category, name='category'),
 	#url(r'^',views.article, name='article'),
 	
@@ -27,3 +30,4 @@ urlpatterns = [
 
 	
 ]
+

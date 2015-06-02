@@ -4,63 +4,89 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>Wiki - The Gardening World</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
-	<script src="/static/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Custom styles for this template -->
-    <link href="/static/style.css" rel="stylesheet">
-
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <title>Wiki - Plant World</title>
+    {% load staticfiles %}
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{% static 'wiki/style.css' %}" />
 
   </head>
 
-  <body>
+<body>
 
-    <div class="container">
-      
-
-      <div class="jumbotron">
-	<h1>Wiki's Gardening World</h1>
+	<div class="jumbotron">
+	<h1>Wiki's Plant World</h1>
 	</div>
-	<div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="{% url 'wiki:wiki' %}">wiki</a></li>
-            <li role="presentation"> <a href="{% url 'home:home' %}">home</a></li>
-		
-            <li role="presentation"><a href="{% url 'wiki:categories' %}">Categories</a></li>
 
-            <!-- RONAN GOES HERE -->
-		<li role="presentation"><a href="#">Login</a></li>
-		<li role="presentation"><a href="#">Register</a></li>
-          </ul>
-        </nav>
-      </div>
-       	
+<div class="container">
+<div id="navbar">
+	<ul>
+	    <li><a href="{% url 'wiki:wiki' %}">Wiki</a></li>
+	    <li><a href="{% url 'wiki:categories' %}">Categories</a></li>
+
+
+	    {% if not fullname %}
+	    <li><a href="{% url 'login:register' %}">Register</a></li>
+	    <li><a href="{% url 'login:guest' %}">Login as Guest</a>
+	    {% endif %}
+		 </li>
+	</ul>
+</div>
+
+	    <div id="login">
+			{% if fullname %}
+				<h3>My Information</h3>
+				<div id="photo">
+					{% load static from staticfiles %}
+					{% static userimage as myphoto %}
+					<img src="{{myphoto}}" alt="{{myphoto}}"/>
+
+				</div>
+				<div id="login_user">
+					<ul>
+		      			<li><a href="#">Logged in as: {{fullname}}</a></li>
+		       			 <li><a href="{% url 'login:logout' %}">Logout</a></li>
+		        		{% if userauth != '0' %}
+		        		<li><a href="{% url 'login:profile' %}">Edit Profile</a></li>
+		        {% endif %}
+
+		 		{% else %}
+		 				
+			        <form id ="login" name='LoginForm' action="{% url 'login:login' %}" method='POST' >
+			          {% csrf_token %}
+			          	<fieldset>
+						<legend>Log In</legend>
+
+				
+			    		<label>User Name</label>
+			     		<input required type="text" name='username_text' id='uname_field' placeholder='username'/>
+		    	
+		    			<label>Password</label>
+			          <input required type='password' name='password_text'id='pword_field' placeholder='password'/>
+			          <input type='submit' value='LOGIN' class="btn btn-success"/>
+			          </fieldset>
+			        </form>
+			    </li>
+		    	
+	    	{% endif %}
+	    	</ul>
+
+
+		</div>
+	</div>
+</div>
+
+<div class="container">
 		{% block content %}
 		{% endblock %}
+</div>
 
-	</body>
-
-	<footer class="footer">
-        <p>&copy; Wiki's Gardening World 2015</p>
-      </footer>
-
-
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-	
-
-   
-
+<div class="container">
+	<footer> 
+	Wiki
+	</footer>
+</div>
+</body>
 </html>
 

@@ -4858,7 +4858,7 @@ a.badge:focus {
 .jumbotron {
   padding:30px 15px;
   color:white; 
-  background:url(/static/Lavender.JPG) no-repeat center center;
+  background:url(/static/background2.jpg) no-repeat center center;
   background-size:cover;
 }
 

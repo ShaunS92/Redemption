@@ -1,20 +1,51 @@
 {% extends 'newbase.html' %}
 	{% block content %}
-	<div class="row marketing">
-        <div class="col-lg-6">
-		<h2>Categories available</h2>
-		{% if categories %}
-                  {% for category in categories %}  
-          		<h4><a href="{% url 'wiki:category' category.id %}"> {{ category.category_title }}{{ category.id }}</a></h4>
-          		{% endfor %}   
-                               
-                           {% else %} 
-                           <h4>No Categories</h4>
-                           {% endif %} 
-		<button id="Add_Category" type="button">Add Category</button>
-        </div>
-	</div>
 
+ 	{% load static from staticfiles %}
+
+
+  	{% if categories %}
+    <div class="row-marketing">
+      <div class="row">
+  	   <ul class="CategoryList">
+
+        {% if userauth == '1' or  userauth == '2'%}
+      	<li>
+        		{% if fullname %}
+        	  	<form action="{% url 'wiki:add_category' %} " method="post">
+                  <legend><h1>Add A New Category</h1></legend>
+        	  	{% csrf_token %}
+              <div class="form-group">
+                  <label for="InputCategory">Category Name</label>
+                 <div class="input-group">
+        	  	    <input class="form-control" type="textarea" name="Title" placeholder="New Category Name" rows="100" cols="50" Required/>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                  </div>
+                </div>
+              <div class="form-group">
+        	  	<input id="Add_Category" type="submit" Value="Add New Category"class="btn btn-primary"/>
+              </div>
+        	  	</form>
+            {% endif %}
+       	{% else %}
+      	  	  Log in as a registered user to create &#9786;
+      	{% endif %}
+      	</li>
+        <hr/>
+          <h1>Categories Available</h1>
+        <hr/>
+
+      	{% for category in categories %}  
+      	<div class="panel panel-primary"><a href="{% url 'wiki:category' category.id %}"><li> {{ category.category_title }}</li></a></div>
+      	
+      	{% endfor %} 
+  </ul>
+              </div>
+        </div>
+      	{% else %} 
+      	<div class="panel panel-primary">No Categories</div>
+  	{% endif %} 
+    
 	{% endblock %}
 
 

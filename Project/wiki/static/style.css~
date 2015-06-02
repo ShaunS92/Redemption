@@ -8,40 +8,43 @@ a {
 }
 body
 {	
-	background-color: black;
+	background-color: white;
+}
+
+li {
+	list-style-type: none;
+
 }
 	
 .footer
 {
-font-size: 20px;
+display: block;
+font-size: 26px;
+text-align: center;
 }
 
 #container{
 	background-color: white;
-	width:70%;
-	margin:10% 15% 10% 15%;
+	width:90%;
+	margin:2% 2% 2% 2%;
 	padding:15px;
-	float:center;
 }
 
-
-#article_container {
-	display: block;
-	margin: 3%;
-
-
+#container h1 {
+	padding-left: 2%;
 
 }
+
 
 #Introduction 
 {
-	font-size: 80px;
 	display: block; 
 	color: black; 
 	margin:2%;
 	padding: 2%;
-	width: 92%; 
-	border: 2px solid black;
+	width: 95%;
+	box-shadow: 2px 2px 3px;
+	border: 2px solid #cdc9c9;
 }
 #Rating 
 {
@@ -49,8 +52,9 @@ font-size: 20px;
 	color: black; 
 	margin:2%;
 	padding: 2%;
-	width: 92%; 
-	border: 2px solid black;
+	width: 95%;
+	box-shadow: 2px 2px 3px;
+	border: 2px solid #cdc9c9;
 }
 #Soil 
 {
@@ -58,8 +62,9 @@ font-size: 20px;
 	color: black; 
 	margin:2%;
 	padding: 2%;
-	width: 92%; 
-	border: 2px solid black;
+	width: 95%; 
+	box-shadow: 2px 2px 3px;
+	border: 2px solid #cdc9c9;
 }
 #Sunlight 
 {
@@ -67,8 +72,9 @@ font-size: 20px;
 	color: black; 
 	margin:2%;
 	padding: 2%;
-	width: 92%; 
-	border: 2px solid black;
+	width: 95%; 
+	box-shadow: 2px 2px 3px;
+	border: 2px solid #cdc9c9;
 }
 #Watering 
 {
@@ -76,9 +82,25 @@ font-size: 20px;
 	color: black; 
 	margin:2%;
 	padding: 2%;
-	width: 92%; 
-	border: 2px solid black;
+	width: 95%; 
+	box-shadow: 2px 2px 3px;
+	border: 2px solid #cdc9c9;
 }
 
+/*styles for wiki divs*/
 
+.WikiInfos {
+	display: block;
+	width: 95%;
+	margin-bottom: 2%;
+	border: 2px solid #cdc9c9;
+	box-shadow: 2px 2px 3px;
+	padding: 2%;
+}
 
+.WikiInfos#latestcategories {
+	display: block;
+	width: 95%;
+	
+	border: 2px solid #cdc9c9;
+}

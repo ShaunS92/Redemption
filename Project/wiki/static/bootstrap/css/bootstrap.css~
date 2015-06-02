@@ -4858,7 +4858,7 @@ a.badge:focus {
 .jumbotron {
   padding:30px 15px;
   color:white; 
-  background:url(/static/Lavender.JPG) no-repeat center center;
+  background:url(/static/back5.jpg) no-repeat center center;
   background-size:cover;
 }
 
@@ -5115,7 +5115,7 @@ a.thumbnail.active {
 }
 .media-right,
 .media > .pull-right {
-  padding-left: 5px;
+  padding-left: 10px;
 }
 .media-left,
 .media > .pull-left {

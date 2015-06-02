@@ -1,20 +1,54 @@
-<!DOCTYPE HTML>
-<html>
-   <head>
-      {% load staticfiles %}
-      <link href="{% static 'home/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+{% extends 'newbase.html' %}
+   {% block content %}
 
-      <title>Home</title>
-   </head>
+   <div class="WikiInfos">
+            <h1>Welcome to the gardening world!</h1>
 
-   <body> 
-	
-	<a href="{% url 'wiki:wiki' %}">wiki</a>
-	<a href="{% url 'home:home' %}">home</a>
-      <h1>This is the home page</h1>
-	
+      <p class="lead">Welcome to wikis gardening world. On this site you get to collaborate and help build useful articles that is all about gardening. Share your gardening knowledge and make the world a better place. </p>
 
-   </body>
-</html>
+
+
+      <!-- START THE FEATURETTES -->
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+             <div class="col-md-7">
+               <h2 class="featurette-heading">Gardening is fun<span class="text-muted"></span></h2>
+                <p class="lead">Find all your articles related to gardening here on Wiki's Gardening World. From how to grow different herbs, to articles around which pestisides to avoid. It can all be found here.</p>
+         </div>
+         <div class="col-md-5">
+               <img class="featurette-image img-responsive center-block" src="/static/Shrubs.jpg" alt="Generic placeholder image" height="75%" width="75%">
+             </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Share Your Knowledge<span class="text-muted"></span></h2>
+          <p class="lead">Wiki allows you to put knowledge to use in collaborative ways. If you have advice on growing shrubs, trees, herbs or even even gardening tools write an article and share it with your friends.</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-responsive center-block" src="/static/Gardeners.JPG" alt="Generic placeholder image" height="20%" width="75%">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Collaboratively Generate Articles<span class="text-muted"></span></h2>
+          <p class="lead">Once you write something the other wiki members are able to add to the pool of knowledge you've created. Thereby making this gardening wiki highly collaborative. See what your peers have to say today</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" src="/static/PeopleTexting.jpg" alt="Generic placeholder image" height="75%" width="75%" >
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+</div>
+   {% endblock %}
 
 
