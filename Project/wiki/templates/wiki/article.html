@@ -6,11 +6,12 @@
 
 	<h1>{{thisArticle.article_title}}</h1>
   <div id="ArticleContent">
-  {{thisArticle.article_content|custom_markdown}}
-  {% load static from staticfiles %}
-  {% static artimage as artpic %}
+	{% load static from staticfiles %}
+  	{% static artimage as artpic %}
   
-  <img src="{{artpic}}" alt="{{artpic}}"/>
+  	<div id="ArticleImage"><img src="{{artpic}}" alt="{{artpic}}" /></div>
+  	{{thisArticle.article_content|custom_markdown}}
+  
   </div>
 
   {% if fullname %}
@@ -30,7 +31,7 @@
     <form id="Edit" action="{% url 'wiki:edit_article_content' thisArticle.id %} " method="post">
     {% csrf_token %}
     <textarea type="text" rows="20" cols="100" name="intro" id="ContentChangeField">{{thisArticle.article_content}}</textarea>
-    <input type="submit" value="Save Changes" class="btn btn-success"/>
+    <input type="submit" value="Save Changes" class="btn btn-success" id="Savings"/>
     </form>
 
     </div> 

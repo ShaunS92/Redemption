@@ -1,7 +1,5 @@
 {% extends 'newbase.html' %}
 	{% block content %}
-	{% load static from staticfiles %}
-		{% static userimage as myphoto %}
 
 		<div class="Central">
 		<div class="row">
@@ -84,7 +82,7 @@
 			</div>
 			<!--<input type="file" name="profilepic" id="userpic" />-->
 			<div class="form-group">
-				<input type='submit' value='SAVE CHANGES' class="btn btn-success" id="SaveProChanges"/>
+				<input type='submit' value='SAVE CHANGES' class="btn btn-success" />
 			</div>
 			<!--<input type='submit' value='SAVE CHANGES' />-->
 			</div>
