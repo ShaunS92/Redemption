@@ -59,7 +59,7 @@ def login_view(request):
 
    					#VALIDATES FILE EXISTS
    					if os.path.isfile(testimage) == False:
-   						userimage = 'wiki/images/none.jpeg'
+   						userimage = 'wiki/images/guest.gif'
 
    					context = {'userauth': userauth,'userid': userid, 'fullname':fullname, 'userimage': userimage}
 					return render(request, 'wiki/wiki.html', context)
@@ -209,9 +209,11 @@ def edit_profile(request):
 	myuser = User.objects.get(pk=userid)
 	userauth = str(myuser.profile.user_auth)
 	userimage = 'wiki/images/' + myuser.username + '.jpeg'
-
-	##
-
+	remove_path = 'wiki/static/wiki/images/' + str(myuser.username) + '.jpeg'
+	if os.path.isfile(remove_path):
+		os.remove(remove_path)
+	else:
+		userimage = 'wiki/images/guest.gif'
 
 
 	if (uauth == '1') or (uauth == '2'):

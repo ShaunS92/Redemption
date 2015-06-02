@@ -3,21 +3,14 @@ html
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-image: url("images/background.jpg");
-  	background-size: cover;  	
-	margin: 2%;
+  	background-size: cover;  
+	/*margin-left: 3%;*/
+	margin: 3%;
 }
 body {
-	width: 95%;
+	width: 100%;
 	height: auto;
 	font-family: 'sans-serif';
-}
-
-
-.container #navbar ul li a:link{
-	display: block;
-   	 float: left;
-	width: 4000px;
-	
 }
 
 
@@ -25,7 +18,7 @@ body {
 	display: block;
     	width: 100%;
     	font-weight: bold;
-    	color: #FFFFFF;
+    	color: white;
     	background-color: #98bf21;
     	text-align: center;
     	padding: 1%;
@@ -56,7 +49,7 @@ body {
 {
 	list-style-type: none;
     	font-weight: bold;
-    	/*background-color: #98bf21;*/
+    	background-color: #98bf21;
     	text-align: center;
     	padding: 2%;
     	text-decoration: none;
@@ -83,11 +76,13 @@ body {
 	opacity: 0.8;
 	position:relative;
 	background-color: white;
-	width:85%;
+	width:80%;
 	margin:auto;
 	margin-bottom: 50px;
 	padding:20px;
-}	
+}
+
+.container a { color: black;}	
 /*.footer
 {
 display: block;
@@ -134,8 +129,14 @@ text-align: center;
 
 #login_user li {
 	list-style-type: none;
-	margin-top: 1%;
+	margin: 1%;
 	width: 50%;
+	height: 30px;
+}
+
+#login_user a {
+	color: white;
+
 }
 
 form#login{
@@ -159,9 +160,14 @@ form#login{
 	margin: 2%;
 }
 
+.jumbotron h1 {
+	background-color: green;
+
+}
+
 #ArticleContent {
 	display: block;
-	width: 100%;
+	width: 95%;
 	border: 2px solid #E5FFCC;
 	box-shadow: gray 5px 5px 10px;
 	margin-bottom: 10%;
@@ -174,6 +180,13 @@ form#login{
 
 }
 
+#ArticleContent img {
+	width: 200px;
+	height: 200px;
+	padding: 2%;
+
+}
+
 #Content_History_Div {
 	display: block;
 	width: 98%;
@@ -181,11 +194,30 @@ form#login{
 	border: 2px solid #E5FFCC;
 }
 
+#EditContentDiv {
+	display: block;
+	width: 95;
+	margin-right: 1%;
+}
+
+#EditContentDiv textarea {
+		width: 96%;
+		margin: 1%;
+}
+
 footer {
 	display: block;
+	clear: left;
+	float: left;
 	width: 95%;
-	margin: 2%;
+	margin: 3%;
 	text-align: center;
+}
+
+footer p {
+	font-size: 150%;
+
+
 }
 
 #RevertButton {
@@ -193,11 +225,93 @@ footer {
 	margin-left: 1%;
 }
 
-#ViewIntroductionHistory_Button, #EditContents, #SaveArticle {
+#ViewIntroductionHistory_Button, #EditContents, #SaveArticle, #Add_Article, #Add_Category {
 	display: block;
 	margin-left: 2%;
 	margin-bottom: 1%;
 	margin-top: 1%;
+	width: 18%;
+	font-size: 120%;
+}
+
+ #SaveProChanges{
+	display: block;
+	margin-left: 2%;
+	margin-bottom: 1%;
+	margin-top: 1%;
+	width: 30%;
+	font-size: 120%;
+
+}
+
+#artpic {
+	display: block;
+	margin-left: 40%;
+	margin-bottom: 1%;
+	margin-top: 1%;
+	width: 30%;
+	font-size: 120%;
+
+
+}
+
+#Add_Article, #Add_Category {
+
+	display: block;
+	margin-left: 42%;
+	margin-bottom: 1%;
+	margin-top: 1%;
+	width: 18%;
+	font-size: 120%;
+
+}
+
+/*Navigation Bar*/
+
+#Navigation {
+	display: block;
+	height: 50px;
+	width: 95%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	background-color: #98bf21;
+}
+
+
+#Navigation ul {
+	display: block;
+	height: 95%;
+	width: 98%;
+	padding: 1%;
+	background-color: #98bf21;
+}
+
+#Navigation ul li {
+	padding: 2%;
+	display: inline;
+}
+
+#Navigation a {
+	color: white;
+	font-size: 130%;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#Savings {
+	margin-left: 2%;
 	width: 15%;
 	font-size: 120%;
 }
+
+.Central {
+	display: block;
+	width: 95%;
+	padding: 3%;
+	margin-left: 0%;
+	margin-right: 5%;
+	margin-bottom: 2%;
+	border: 2px solid gray;
+	box-shadow: gray 5px 5px 10px;
+}
+

@@ -20,12 +20,16 @@
 	</div>
 
 <div class="container">
-<div id="navstyles">
+<div id="Navigation">
 	<ul>
 	    <li><a href="{% url 'wiki:wiki' %}">Wiki</a></li>
 	    <li><a href="{% url 'wiki:categories' %}">Categories</a></li>
+
+
+	    {% if not fullname %}
 	    <li><a href="{% url 'login:register' %}">Register</a></li>
 	    <li><a href="{% url 'login:guest' %}">Login as Guest</a>
+	    {% endif %}
 		 </li>
 	</ul>
 </div>
@@ -54,14 +58,10 @@
 			          	<fieldset>
 						<legend>Log In</legend>
 
-				{% if error %}
-
-						<label>User Name </label>
-			    		<input required type="text" name='username_text' id='uname_field' placeholder="{{error}}"/>
-			    {%else%}
+				
 			    		<label>User Name</label>
 			     		<input required type="text" name='username_text' id='uname_field' placeholder='username'/>
-		    	{% endif %}
+		    	
 		    			<label>Password</label>
 			          <input required type='password' name='password_text'id='pword_field' placeholder='password'/>
 			          <input type='submit' value='LOGIN' class="btn btn-success"/>
@@ -83,10 +83,13 @@
 </div>
 
 <div class="container">
-	<footer> 
-	Wiki
-	</footer>
+	<footer class="footer">
+        <p>&copy; Wiki's Gardening World 2015</p>
+      </footer>
 </div>
+	
 </body>
+	
+
 </html>
 

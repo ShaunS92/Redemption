@@ -36,7 +36,7 @@ def wiki(request):
 
 			   		#VALIDATES FILE EXISTS
 			   		if os.path.isfile(testimage) == False:
-			   			userimage = 'wiki/images/none.jpeg'
+			   			userimage = 'wiki/images/guest.gif'
 
 					context = {'userauth':userauth,'userauth':userauth,'userid': userid , 'fullname': fullname, 'userimage': userimage }
 					return render(request, 'wiki/wiki.html', context)
@@ -69,7 +69,7 @@ def categories(request):
 
 		   		#VALIDATES FILE EXISTS
 		   		if os.path.isfile(testuserimage) == False:
-		   			userimage = 'wiki/images/none.jpeg'
+		   			userimage = 'wiki/images/guest.gif'
 		   		
 				
 				context = {'userauth':userauth,'categories': categories, 'userid': userid , 'fullname': fullname,  'userimage': userimage  }
@@ -103,7 +103,7 @@ def category(request, test):
 
 		   		#VALIDATES FILE EXISTS
 		   		if os.path.isfile(testuserimage) == False:
-		   			userimage = 'wiki/images/none.jpeg'
+		   			userimage = 'wiki/images/guest.gif'
 		   		
 
    			
@@ -148,7 +148,7 @@ def article(request, test):
 
 		   		#VALIDATES FILE EXISTS
 		   		if os.path.isfile(testuserimage) == False:
-		   			userimage = 'wiki/images/none.jpeg'
+		   			userimage = 'wiki/images/guest.gif'
 		   		
 
    				#VALIDATES FILE EXISTS
@@ -197,7 +197,7 @@ def edit_article_content(request ,eai):
 
 		   		#VALIDATES FILE EXISTS
 		   		if os.path.isfile(testuserimage) == False:
-		   			userimage = 'wiki/images/none.jpeg'
+		   			userimage = 'wiki/images/guest.gif'
 		   		
 
    				#VALIDATES FILE EXISTS
@@ -238,7 +238,7 @@ def article_history(request ,hai):
 
 		   	#VALIDATES FILE EXISTS
 		   	if os.path.isfile(testuserimage) == False:
-		   		userimage = 'wiki/images/none.jpeg'
+		   		userimage = 'wiki/images/guest.gif'
 		   		
 
    			#VALIDATES FILE EXISTS
@@ -296,7 +296,7 @@ def revert_content(request ,ri , related):
 
 		   	#VALIDATES FILE EXISTS
 		   	if os.path.isfile(testuserimage) == False:
-		   		userimage = 'wiki/images/none.jpeg'
+		   		userimage = 'wiki/images/guest.gif'
 		   		
 
    			#VALIDATES FILE EXISTS
@@ -343,7 +343,7 @@ def add_category(request):
 	   		testimage = 'wiki/static/' + userimage
 	   		#VALIDATES FILE EXISTS
 	   		if os.path.isfile(testimage) == False:
-	   			userimage = 'wiki/images/none.jpeg'
+	   			userimage = 'wiki/images/guest.gif'
 		
 			context = {'userauth':userauth,'categories': categories,'userid': userid ,
 			'fullname': fullname,
@@ -400,7 +400,7 @@ def add_article(request, categoryID):
 	   		testimage = 'wiki/static/' + userimage
 	   		#VALIDATES FILE EXISTS
 	   		if os.path.isfile(testimage) == False:
-	   			userimage = 'wiki/images/none.jpeg'
+	   			userimage = 'wiki/images/guest.gif'
 		
 
 

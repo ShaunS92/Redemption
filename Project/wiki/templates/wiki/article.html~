@@ -1,87 +1,108 @@
 {% extends 'newbase.html' %}
+{% load custom_markdown %}
 	{% block content %}
 
+  
 
-      <div id="article_container">
+	<h1>{{thisArticle.article_title}}</h1>
+  <div id="ArticleContent">
+	{% load static from staticfiles %}
+  	{% static artimage as artpic %}
+  
+  	<div id="ArticleImage"><img src="{{artpic}}" alt="{{artpic}}" width="150px" height="150px"/></div>
+  	<div id="ArtContent">{{thisArticle.article_content|custom_markdown}}</div>
+  
+  </div>
 
-            <h1>Growing - {{thisArticle.article_title}}</h1>
-           
-            <div id="Introduction">
-               <h2>Introduction</h2>
-               <p>
-               {{thisArticle.article_introduction}}
-               </p>
+  {% if fullname %}
+  {% if userauth == '1' or userauth == '2' %}
+    <button id="EditContents" type="button" class="btn btn-primary" >Edit</button>
+    <div id = "EditContentDiv" style="display:none">
+    <ul>
+    <h2>Article Style Tools</h2>
+    <hr/>
+    <li>*yourtext* : Italics</li>
+    <li>**yourtext** : Bold</li>
+    <li>***yourtext*** : Bold+Italics</li>
+    <li>* yourtext : list</li>
+    <li>[linkname](linkurl) : link</li>
+    </ul>
+
+    <form id="Edit" action="{% url 'wiki:edit_article_content' thisArticle.id %} " method="post">
+    {% csrf_token %}
+    <textarea type="text" rows="20" cols="100" name="intro" id="ContentChangeField">{{thisArticle.article_content}}</textarea>
+    <input type="submit" value="Save Changes" class="btn btn-success" id="Savings"/>
+    </form>
+
+    </div> 
+
+      {% if userauth == '2' %}          
+    <form action="{% url 'wiki:article_history' thisArticle.id %} " method="post">  
+    {% csrf_token %}
+    <input id="ViewIntroductionHistory_Button" type="submit" value="History" class="btn btn-primary" /> 
+    </form>
+
+  	
+    
+  {% endif %} {% else %}
+
+  <div id="ArticleContent">
+    <h6>Log in as a registered user to edit</h6>
+  <div>
+
+  {% endif %}
 
 
-               <button id="EditIntroduction" type="button">Edit Introduction</button>
 
-               <div id = "text" style="display:none">
+  {% if thisHistory %}
+  <div id = "Content_History_Div" >
+  {% for hist in thisHistory %} 	
 
-                   <form action="{% url 'wiki:edit_article' thisArticle.id %} " method="post" id="IntroductionText">
-                     {% csrf_token %}
-                     
-                     <input type="text" name="new" id="textarea" />
-                     <input type="submit" id="submit" value="Save Changes"/>
+  <form action="{% url 'wiki:revert_content' thisArticle.id hist.id %} " method="post">  
+  {% csrf_token %}                                    
+  <p>
+  Last Edited: 
+  {{ hist.article_content_history_timestamp }} 
+  
+  by User:
+  {{ hist.article_author }} 
+	<input  name="{{hist.id}}" type="submit" value="Revert" class="btn btn-primary" />
+	</p>
+	</form>                                          		
+  
+  {% endfor %}	{% endif %} 
+  {% endif %} 	
 
-                     <!--<textarea id="textarea" placeholder=""></textarea>-->
+	</div> 
 
 
-                   </form>
+ <script type="text/javascript">
+   EditContents = document.getElementById('EditContents');
+   ViewIntroductionHistory_Button = document.getElementById('ViewIntroductionHistory_Button');
+   
+   
 
-                   
+   EditContentDiv = document.getElementById('EditContentDiv');
+   Content_History_Div = document.getElementById('Content_History_Div');
 
-               </div>
 
-                <script type="text/javascript">
-                  var theButton = document.getElementById('EditIntroduction');
-                  var submitButton = document.getElementById('submit');
-                  text = document.getElementById('text');
-                  textarea = document.getElementById('textarea');
+   ContentChangeField = document.getElementById('ContentChangeField');
+ 
                   
-                  theButton.onclick = function() 
-                  { 
-                  textarea.value = "{{thisArticle.article_introduction}}";
-                  var isHidden = text.style.display == 'none';
-                  text.style.display = isHidden ? 'block' : 'none'   
-                  }
-                  submitButton.onclick = function() 
-                  { 
-                  location.reload();  
-                  }
-
-                 
-               </script>
+   EditContents.onclick = function() 
+   { 
+   var isHidden = EditContentDiv.style.display == 'none';
+   EditContentDiv.style.display = isHidden ? 'block' : 'none'   
+   }
+   ViewIntroductionHistory_Button.onclick = function() 
+   { 
+   var isHidden = Content_History_Div.style.display == 'none';
+   Content_History_Div.style.display = isHidden ? 'block' : 'none'   
+   }
+   </script>
 
 
-            </div>
 
-            <div id="Rating">
-               <h3>Rating</h3>
-               <p>{{thisArticle.article_rating}}</p2>
-            </div>
 
-            <div id="Soil">
-               <h3>Soil</h3>
-               <p> {{thisArticle.article_soil}}</p2>
-            </div>
-
-            <div id="Sunlight">
-               <h3>Sunlight</h3>
-               <p>{{thisArticle.article_sunlight}}</p>
-            </div>
-
-            <div id="Watering">
-               <h3>Watering</h3>
-               <p>{{thisArticle.article_watering}}</p>
-            </div>   
-
-         
-      </div>
 {% endblock %}
       
-
-
-   <!--</body>
-</html>
-
--->
