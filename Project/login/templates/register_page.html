@@ -1,29 +1,79 @@
-<!DOCTYPE html>
-<html>
+{% extends 'newbase.html' %}
+	{% block content %}
 
-	<head>
-		<title>Register</title>
-	</head>
-
-	<body>
-
+		{% load static from staticfiles %}
+		{% static userimage as myphoto %}
+		<div class="row">
 		<form enctype='multipart/form-data' name = 'register_form' method='POST' action ='.'>
+			<legend><h1>Register Me</h1></legend>			
 			{% csrf_token %}
-			<input name = 'username_text' id='uname_field' placeholder='username' />
-			<input name='password_text'id='pword_field' placeholder='password' />
-			<input name='first_name_text'id='id_first_name' placeholder='First Name' />
-			<input name='last_name_text'id='id_last_name' placeholder='Lastname' />
-			<input name='email_text'id='id_email' placeholder='example@something.com' />
-			Enter Your Date
-			<input type="date" name="bday_text">
-			<textarea name='description_text' id = 'id_descrpt'>Short Description</textarea>
+			{{error}}
+		<div class="col-lg-6">
+			<div id="User_Registration">
+			 <div class="form-group">
+                    		<label for="InputName">User Name</label>
+				<div class="input-group">
+					<input class="form-control" name = 'username_text' id='uname_field' placeholder='username' required/>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				</div>
+			</div>
+			<div class="form-group">
+                    		<label for="InputPass">Password</label>
+				<div class="input-group">
+					<input class="form-control" name='password_text' id='pword_field' placeholder='password' type="password" required/>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				</div>
+			</div>
+			<div class="form-group">
+                    		<label for="InputFirstName">First Name</label>
+				<div class="input-group">
+					<input class="form-control" name='first_name_text' id='id_first_name' placeholder="First Name" required/>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				</div>
+			</div>
+			<div class="form-group">
+                    		<label for="InputLastName">Last Name</label>
+				<div class="input-group">
+					<input class="form-control" name='last_name_text' id='id_last_name' placeholder="Last Name" required/>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				</div>
+			</div>
+			<div class="form-group">
+                    		<label for="Email">Email Address</label>
+				<div class="input-group">
+					<input class="form-control" type='email' name='email_text' id='id_email' placeholder='example@something.com' required/>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				</div>
+			</div>
+			<div class="form-group">
+                    		<label for="BirthDate">Enter Your Birth Date</label>
+				<div class="input-group">
+					<input class="form-control" type="date" name="bday_text" required/>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				</div>
+			</div>
+			<div class="form-group">
+                    		<label for="About Me">About Me</label>
+				<div class="input-group">
+					<textarea class="form-control" name='description_text' id = 'id_descrpt' required>Short Description</textarea>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				</div>
+			</div>
+			<div class="input-group">
+			<label>My Picture</label>
+			<input class="btn btn-primary" type="file" name="profilepic" id="userpic" />
+			</div>
+			<div class="input-group">
 			
-			<input type='submit' value='REGISTER' />
+			</div>
+			<div class="input-group">
+			<input type='submit' value='REGISTER' class="btn btn-success" />
+			</div>
+			</div>
 		</form>
 		
 		
 		</form>
-
-	</body>
-
-</html>
+		</div>
+		</div>
+	{% endblock %}

@@ -1,153 +1,102 @@
 {% extends 'newbase.html' %}
+{% load custom_markdown %}
 	{% block content %}
 
-
-      <div id="container">
-
-            <h1>Growing - {{thisArticle.article_title}}</h1>
-           
-            
-<!-- INTRODUCTION -->
-            <div id="Introduction">
-               <h2>Introduction</h2>
-               <p>{{thisArticle.article_introduction}}</p>
-               <button id="EditIntroduction_Button" type="button">Edit Introduction </button>
-               <div id = "Introduction_Div" style="display:none">
-
-                   <form action="{% url 'wiki:edit_article_introduction' thisArticle.id %} " method="post">
-                     {% csrf_token %}
-                     <input type="textarea" name="intro" id="Introduction_ChangeField" />
-                     <input type="submit" id="Introduction_SaveChangesButton" value="Save Changes"/>
-                   </form>
-              </div> 
-            </div>
-
-<!-- RATING -->
-            <div id="Rating">
-               <h2>Rating</h2>
-               <p>{{thisArticle.article_rating}}</p>
-               <button id="EditRating_Button" type="button">Edit Introduction </button>
-               <div id = "Rating_Div" style="display:none">
-
-                   <form action="{% url 'wiki:edit_article_rating' thisArticle.id %} " method="post">
-                     {% csrf_token %}
-                     <input type="textarea" name="rat" id="Rating_ChangeField" />
-                     <input type="submit" id="Rating_SaveChangesButton" value="Save Changes"/>
-                   </form>
-            </div> 
-            </div> 
-
-<!-- SOIL -->
-            <div id="Soil">
-             
-               <h2>Soil</h2>
-               <p>{{thisArticle.article_soil}}</p>
-               <button id="EditSoil_Button" type="button">Edit Introduction </button>
-               <div id = "Soil_Div" style="display:none">
-
-                   <form action="{% url 'wiki:edit_article_soil' thisArticle.id %} " method="post">
-                     {% csrf_token %}
-                     <input type="textarea" name="sol" id="Soil_ChangeField" />
-                     <input type="submit" id="Soil_SaveChangesButton" value="Save Changes"/>
-                   </form>
-            </div> </div> 
-
-
-<!-- SUNLIGHT -->
-             <div id="Sunlight">
   
-               <h2>Sunlight</h2>
-               <p>{{thisArticle.article_sunlight}}</p>
-               <button id="EditSunlight_Button" type="button">Edit Introduction </button>
-               <div id = "Sunlight_Div" style="display:none">
 
-                   <form action="{% url 'wiki:edit_article_sunlight' thisArticle.id %} " method="post">
-                     {% csrf_token %}
-                     <input type="textarea" name="sun" id="Sunlight_ChangeField" />
-                     <input type="submit" id="Sunlight_SaveChangesButton" value="Save Changes"/>
-                   </form>
-            </div> </div> 
+	<h1>{{thisArticle.article_title}}</h1>
+  <div id="ArticleContent">
+  {{thisArticle.article_content|custom_markdown}}
+  {% load static from staticfiles %}
+  {% static artimage as artpic %}
+  
+  <img src="{{artpic}}" alt="{{artpic}}"/>
+  </div>
 
-<!-- WATERING -->
-             <div id="Watering">
-        
-               <h2>Watering</h2>
-               <p>{{thisArticle.article_watering}}</p>
-               <button id="EditWatering_Button" type="button">Edit Introduction </button>
-               <div id = "Watering_Div" style="display:none">
+  {% if fullname %}
+  {% if userauth == '1' or userauth == '2' %}
+    <button id="EditContents" type="button" class="btn btn-primary" >Edit</button>
+    <div id = "EditContentDiv" style="display:none">
+    <ul>
+    <h2>Article Style Tools</h2>
+    <hr/>
+    <li>*yourtext* : Italics</li>
+    <li>**yourtext** : Bold</li>
+    <li>***yourtext*** : Bold+Italics</li>
+    <li>* yourtext : list</li>
+    <li>[linkname](linkurl) : link</li>
+    </ul>
 
-                   <form action="{% url 'wiki:edit_article_watering' thisArticle.id %} " method="post">
-                     {% csrf_token %}
-                     <input type="textarea" name="wat" id="Watering_ChangeField" />
-                     <input type="submit" id="Watering_SaveChangesButton" value="Save Changes"/>
-                   </form>
-            </div> 
+    <form id="Edit" action="{% url 'wiki:edit_article_content' thisArticle.id %} " method="post">
+    {% csrf_token %}
+    <textarea type="text" rows="20" cols="100" name="intro" id="ContentChangeField">{{thisArticle.article_content}}</textarea>
+    <input type="submit" value="Save Changes" class="btn btn-success"/>
+    </form>
 
-      </div></div> 
+    </div> 
+
+      {% if userauth == '2' %}          
+    <form action="{% url 'wiki:article_history' thisArticle.id %} " method="post">  
+    {% csrf_token %}
+    <input id="ViewIntroductionHistory_Button" type="submit" value="History" class="btn btn-primary" /> 
+    </form>
+
+  	
+    
+  {% endif %} {% else %}
+
+  <div id="ArticleContent">
+    <h6>Log in as a registered user to edit</h6>
+  <div>
+
+  {% endif %}
 
 
 
+  {% if thisHistory %}
+  <div id = "Content_History_Div" >
+  {% for hist in thisHistory %} 	
 
+  <form action="{% url 'wiki:revert_content' thisArticle.id hist.id %} " method="post">  
+  {% csrf_token %}                                    
+  <p>
+  Last Edited: 
+  {{ hist.article_content_history_timestamp }} 
+  
+  by User:
+  {{ hist.article_author }} 
+	<input  name="{{hist.id}}" type="submit" value="Revert" class="btn btn-primary" />
+	</p>
+	</form>                                          		
+  
+  {% endfor %}	{% endif %} 
+  {% endif %} 	
 
-
-
-
-
-
-
-
-
-
+	</div> 
 
 
  <script type="text/javascript">
-   EditIntroduction_Button = document.getElementById('EditIntroduction_Button');
-   EditRating_Button = document.getElementById('EditRating_Button');
-   EditSoil_Button = document.getElementById('EditSoil_Button');
-   EditSunlight_Button = document.getElementById('EditSunlight_Button');
-   EditWatering_Button = document.getElementById('EditWatering_Button');
+   EditContents = document.getElementById('EditContents');
+   ViewIntroductionHistory_Button = document.getElementById('ViewIntroductionHistory_Button');
+   
+   
 
-   Introduction_Div = document.getElementById('Introduction_Div');
-   Rating_Div = document.getElementById('Rating_Div');
-   Soil_Div = document.getElementById('Soil_Div');
-   Sunlight_Div = document.getElementById('Sunlight_Div');
-   Watering_Div = document.getElementById('Watering_Div');
+   EditContentDiv = document.getElementById('EditContentDiv');
+   Content_History_Div = document.getElementById('Content_History_Div');
 
-   Introduction_ChangeField = document.getElementById('Introduction_ChangeField');
-   Rating_ChangeField = document.getElementById('Rating_ChangeField');
-   Soil_ChangeField = document.getElementById('Soil_ChangeField');
-   Sunlight_ChangeField = document.getElementById('Sunlight_ChangeField');
-   Watering_ChangeField = document.getElementById('Watering_ChangeField');
+
+   ContentChangeField = document.getElementById('ContentChangeField');
+ 
                   
-   EditIntroduction_Button.onclick = function() 
+   EditContents.onclick = function() 
    { 
-   Introduction_ChangeField.value = "{{thisArticle.article_introduction}}"
-   var isHidden = Introduction_Div.style.display == 'none';
-   Introduction_Div.style.display = isHidden ? 'block' : 'none'   
+   var isHidden = EditContentDiv.style.display == 'none';
+   EditContentDiv.style.display = isHidden ? 'block' : 'none'   
    }
-   EditRating_Button.onclick = function() 
+   ViewIntroductionHistory_Button.onclick = function() 
    { 
-   Rating_ChangeField.value = "{{thisArticle.article_rating}}"
-   var isHidden = Rating_Div.style.display == 'none';
-   Rating_Div.style.display = isHidden ? 'block' : 'none'   
-   }
-    EditSoil_Button.onclick = function() 
-   { 
-   Soil_ChangeField.value = "{{thisArticle.article_soil}}"
-   var isHidden = Soil_Div.style.display == 'none';
-   Soil_Div.style.display = isHidden ? 'block' : 'none'   
-   }
-    EditSunlight_Button.onclick = function() 
-   { 
-   Sunlight_ChangeField.value = "{{thisArticle.article_sunlight}}"
-   var isHidden = Sunlight_Div.style.display == 'none';
-   Sunlight_Div.style.display = isHidden ? 'block' : 'none'   
-   }
-    EditWatering_Button.onclick = function() 
-   { 
-   Watering_ChangeField.value = "{{thisArticle.article_watering}}"
-   var isHidden = Watering_Div.style.display == 'none';
-   Watering_Div.style.display = isHidden ? 'block' : 'none'   
+   var isHidden = Content_History_Div.style.display == 'none';
+   Content_History_Div.style.display = isHidden ? 'block' : 'none'   
    }
    </script>
 

@@ -14,11 +14,10 @@ class UserProfile(models.Model):
     #EXTENDED USER CLASS
     user = models.OneToOneField(User, primary_key=True, related_name='profile')
     birthdate = models.DateField(null=True)
-    rating = models.IntegerField(default=5)		#RATING USED FOR ARTICLES
     description = models.TextField(default='')  #SHORT DESCRIPTION OF THE USER
-    #profile_image = models.ImageField(storage= fs, blank=True, null=True)
     ip_address = models.TextField(default='0.0.0.0')
-
+    user_auth = models.IntegerField(default=1)
+    
 
     def __unicode__(self):
         return self.user.username

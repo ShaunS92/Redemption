@@ -1,0 +1,165 @@
+h1, h2, h3, a {
+	color: black;
+}
+
+a {
+	font-size: 200%;
+
+}
+body
+{	
+	background-color: white;
+}
+
+li {
+	list-style-type: none;
+
+}
+	
+.footer
+{
+display: block;
+font-size: 26px;
+text-align: center;
+}
+
+#container{
+	background-color: white;
+	width:90%;
+	margin:2% 2% 2% 2%;
+	padding:15px;
+}
+
+#container h1 {
+	padding-left: 2%;
+
+}
+
+
+#Introduction 
+{
+	display: block; 
+	color: black; 
+	margin:2%;
+	padding: 2%;
+	width: 95%;
+	box-shadow: 2px 2px 3px;
+	border: 2px solid gray;
+}
+#Rating 
+{
+	display: block; 
+	color: black; 
+	margin:2%;
+	padding: 2%;
+	width: 95%;
+	box-shadow: 2px 2px 3px;
+	border: 2px solid gray;
+}
+#Soil 
+{
+	display: block; 
+	color: black; 
+	margin:2%;
+	padding: 2%;
+	width: 95%; 
+	box-shadow: 2px 2px 3px;
+	border: 2px solid gray;
+}
+#Sunlight 
+{
+	display: block; 
+	color: black; 
+	margin:2%;
+	padding: 2%;
+	width: 95%; 
+	height: auto;
+	box-shadow: 2px 2px 3px;
+	border: 2px solid gray;
+}
+#Watering 
+{
+	display: block; 
+	color: black; 
+	margin:2%;
+	padding: 2%;
+	width: 95%; 
+	box-shadow: 2px 2px 3px;
+	border: 2px solid gray;
+}
+
+/*styles for wiki divs*/
+
+.WikiInfos {
+	display: block;
+	width: 95%;
+	margin: 2%;
+	border: 2px solid #cdc9c9;
+	box-shadow: 2px 2px 3px;
+	padding: 2%;
+	background: url("/static/back5.JPG") center center no-repeat;
+}
+
+#latestcategories, #populararticles {
+	display: block;
+	margin-bottom: 1%;
+	width: 98%;
+	border: 2px solid #cdc9c9;
+}
+
+#latestcategories h3, #populararticles h3 {
+	display: block;
+	width: 100%;
+	background-color: #cdc9c9;
+	text-align: center;
+	color: white;
+}
+
+
+h4 {
+	padding-left: 1%;
+	text-align: center;
+}
+
+#Add_Category, #Add_Article {
+	width: 55%;
+	margin-left: 25%;
+	font-size: 150%;
+	padding: 2%;
+}
+
+.Central {
+	width: 70%;
+	display: block;
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+
+/*Button styles for edit article page*/
+
+#EditIntroduction_Button, #EditRating_Button, #EditSoil_Button, #EditSunlight_Button, #EditWatering_Button, #Introduction_SaveChangesButton, #Rating_SaveChangesButton, #Soil_SaveChangesButton, #Sunlight_SaveChangesButton, #Watering_SaveChangesButton
+{
+	display: block;
+	width: 20%;
+	margin: 3%;
+
+}
+
+
+
+/*textbox styling* for article page*/
+
+#Introduction_ChangeField, #Rating_ChangeField, #Soil_ChangeField, #Sunlight_ChangeField, #Watering_ChangeField {
+	width: 90%;
+	margin: 2%;
+	
+}
+
+form {
+	height: 50%;
+
+}
+
+
+

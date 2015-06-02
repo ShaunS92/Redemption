@@ -1,20 +1,61 @@
 {% extends 'newbase.html' %}
 	{% block content %}
 
-      <h2>Category</h2>
-      <button id="Add_Article" type="button">Add Article</button>
-      <ul>
-               {% if articles %}
-                  {% for article in articles %}  
-                       <li> 
-                           <a href="{% url 'wiki:article' article.id %}"> {{ article.article_title }}{{ article.id }}</a>
-                        </li>                                   
-                        {% endfor %}   
-                               
-                           {% else %} 
-                           <p>No articles</p>
-                           {% endif %} 
-       </ul>
+  {% load static from staticfiles %}
+  
+  <div class="row">
+    <ul class="CategoryList">
+      {% if fullname %}
+    <li>
+
+    <form action="{% url 'wiki:add_article' thiscat.id %} " method="post" enctype='multipart/form-data'>
+            <legend><h1>Add A New Article</h1></legend>
+             {% csrf_token %}
+             <div class="form-group">
+                <label for="InputArticleTitle">Title</label>
+                  <div class="input-group">
+                    <input class="form-control" required type="textarea" name="Title" placeholder="Title"/>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="InputArticleContent">Content</label>
+                  <div class="input-group">
+                    <textarea class="form-control" required type="textarea" name="Content" placeholder="Contents Here"></textarea>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                  </div>
+              </div>
+            <div class="form-group">
+              <input type="file" name='articlepic' id="artpic" />
+              {{error}}
+            </div>
+            <div class="form-group">
+    <input id="Add_Article" type="submit" value="Add Article"  class="btn btn-primary"/>
+    </div>
+    </form>
+  </li>
+       
+
+    {% else %}
+    <li>Log in to create an Article &#9786;</li>
+    {% endif %}
+    <hr/>
+        <h1>Articles Available</h1>
+    <hr/>
+  
+    {% if articles %}
+
+    {% for article in articles %}  
+    <div class="panel panel-primary"><a href="{% url 'wiki:article' article.id %}"><li> {{ article.article_title }}</li></a></div>
+    {% endfor %} 
+
+
+    {% else %} 
+    <div class="panel panel-primary"><li>No articles</li></div>
+    {% endif %}   
+  </ul>            
+  </div>
+
 
 {% endblock %}
 

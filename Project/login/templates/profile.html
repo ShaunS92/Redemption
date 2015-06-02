@@ -1,0 +1,93 @@
+{% extends 'newbase.html' %}
+	{% block content %}
+
+		<div class="row">
+
+		<form enctype='multipart/form-data' name = 'register_form' method='POST' action ='.'>
+			<legend><h1>Edit Profile</h1></legend>
+			{% csrf_token %}
+			<h1>{{username}}</h1>
+			{{error}}
+			<div class="col-lg-6">
+			<div class="form-group">
+                    		<label for="InputOldPassword">Current Password</label>
+				<div class="input-group">
+					<input class="form-control" type='password' name='password_text'id='pword_field' placeholder='current password' required/>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				</div>
+			<!--<input type='password' name='password_text'id='pword_field' placeholder='current password' />-->
+
+			<div class="form-group">
+                    		<label for="InputNewPassword">New Password</label>
+				<div class="input-group">
+					<input class="form-control" type='password' name='new_password_text'id='new_pword_field' placeholder="new password" />
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				</div>
+			</div>
+			<!--<input type='password' name='new_password_text'id='new_pword_field' placeholder='new password' />-->
+
+			<div class="form-group">
+                    		<label for="InputFirstName">First Name</label>
+				<div class="input-group">
+					<input class="form-control" name='first_name_text' id='id_first_name' value= {{firstname}} />
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				</div>
+			</div>
+
+			<!--<input name='first_name_text'id='id_first_name' value= {{firstname}} />-->
+
+			<div class="form-group">
+                    		<label for="InputLastName">Last Name</label>
+				<div class="input-group">
+					<input class="form-control" name='last_name_text'id='id_last_name' value= {{lastname}} />
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				</div>
+			</div>
+
+			<!--<input name='last_name_text'id='id_last_name' value= {{lastname}} />-->
+
+			<div class="form-group">
+                    		<label for="InputEmail">Email Address</label>
+				<div class="input-group">
+					<input class="form-control" name='email_text'id='id_email' value={{email}} />
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				</div>
+			</div>
+
+			<!--<input name='email_text'id='id_email' value={{email}} />
+			Enter Your Date-->
+			<div class="form-group">
+                    		<label for="InputBirthday">Enter Your Birthday</label>
+				<div class="input-group">
+					<input class="form-control" type="date" name="bday_text" value= {{birthdate}} />
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				</div>
+			</div>
+
+			<!--<input type="date" name="bday_text" value= {{birthdate}}>-->
+			<div class="form-group">
+                    		<label for="InputDescription">About Me</label>
+				<div class="input-group">
+					<textarea class="form-control" name='description_text' id = 'id_descrpt' >{{description}}</textarea>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				</div>
+
+			</div>
+
+			<!--<textarea name='description_text' id = 'id_descrpt'>{{description}}</textarea>-->
+			<div class="form-group">
+				<label>My Picture</label>
+				<input type="file" name="profilepic" id="userpic" />	
+			</div>
+			<!--<input type="file" name="profilepic" id="userpic" />-->
+			<div class="form-group">
+				<input type='submit' value='SAVE CHANGES' class="btn btn-success" />
+			</div>
+			<!--<input type='submit' value='SAVE CHANGES' />-->
+			</div>
+		</form>
+		
+	</div>
+
+{% endblock %}
+      
